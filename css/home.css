@@ -52,12 +52,19 @@
 .sections div p {
     font-size: calc(1vw + 1vh);
 }
-.sections .section1 {
+.sections #section1 {
     background-color: #BFD1E5;       
 }
-.sections .section2 {
+.sections #section2 {
     background-color: #EBF5EE;
 }
-.sections .section3 {
+/* #section2 #microscope {
+    position: absolute;
+    right: 0;
+    margin: 0;
+    width: auto;
+    height: 30%;
+} */
+.sections #section3 {
     background-color: #BFD1E5;     
 }
