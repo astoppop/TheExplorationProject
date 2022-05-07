@@ -1,0 +1,205 @@
+/* Style hamburger menu and add a leave page transition */
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+/* General nav bar styling */
+.nav {
+    top: 0;
+    left: 0;
+    position: fixed;
+    height: 100%;
+    transform: translate(-100%, 0);
+}
+
+/* Button styling */
+.nav .openbutton {
+    cursor: pointer;
+    width: max(200px, 20vw);
+    height: max(50px, 5vh);
+    margin: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    transform: translate(25%, 0);
+}
+.openbutton .bars {
+    float: right;
+    width: max(52.5px, 5.25vw);
+    height: 100%;
+}
+.openbutton .bars span {
+    /* Seperate lines */
+    display: block;
+
+    margin: max(5px, 0.5vh) max(5px, 0.5vw);
+    width: max(45px, 4.5vw);
+    height: max(10px, 1vh);
+    background: #000;
+    border-radius: 5px;
+}
+/* Two divs - centerize one, other one to use border for arrow */
+.leftarrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.leftarrow div {
+    /* Use border to make an arrow */
+    width: calc(1vw + 1vh);
+    height: calc(1vw + 1vh);
+    border: 0 solid #000;
+    border-width: 0 5px 5px 0;
+    transform: rotate(135deg);
+}
+
+/* Link styling */
+.nav ul {
+    min-width: 200px;
+    width: 20vw;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    list-style: none;
+}
+.nav ul li a {
+    cursor: pointer;
+    padding: 10px;
+    color: #000;
+    font-size: calc(1.5vw + 1.5vh);
+    text-decoration: none;
+}
+
+/* Hovered styles */
+.nav ul li .hovered {color: #ADD8E6;}
+.nav ul li .hovered.on {
+    color: #000;
+    opacity: 0.5;
+}
+.nav ul li .on {
+    cursor: default !important;
+}
+
+/* Slide animations */
+/* Bar */
+.navSlideInBar {
+    transform: translate(calc(-20vw), 0);
+    animation: slideInBar 0.5s linear forwards;
+}
+@keyframes slideInBar {
+    from {transform: translate(0, 0);}
+    to {transform: translate(100%, 0);}
+}
+.navSlideOutBar {
+    transform: translate(100%, 0);
+    animation: slideOutBar 0.5s linear forwards;
+}
+@keyframes slideOutBar {
+    from {transform: translate(100%, 0);}
+    to {transform: translate(0, 0);}
+}
+
+/* Button */
+.navSlideInButton {
+    transform: translate(25%, 0);
+    animation: slideInButton 0.5s linear forwards;
+}
+@keyframes slideInButton {
+    from {transform: translate(25%, 0);}
+    to {
+        transform: translate(100%, 0);
+        border-radius: 0;
+    }
+}
+.navSlideOutButton {
+    transform: translate(100%, 0);
+    animation: slideOutButton 0.5s linear forwards;
+}
+@keyframes slideOutButton {
+    from {transform: translate(100%, 0);}
+    to {transform: translate(25%, 0);}
+}
+.openbutton div {
+    animation: spinAppear 0.2s linear backwards;
+}
+@keyframes spinAppear {
+    from {
+        transform: rotate(360deg) scale(0%);
+        opacity: 0;
+    }
+    to {
+        transform: rotate(0) scale(100%);
+        opacity: 1;
+    }
+}
+.openbutton .hidden {
+    animation: spinDisappear 0.2s linear forwards !important;
+    opacity: 0 !important;
+}
+@keyframes spinDisappear {
+    from {
+        transform: rotate(0) scale(100%);
+        opacity: 1;
+    }
+    to {
+        transform: rotate(360deg) scale(0%);
+        opacity: 0;
+    }
+}
+.openbutton div.leftarrow {
+    animation: spinArrowAppear 0.2s linear backwards;
+}
+@keyframes spinArrowAppear {
+    from {
+        transform: translate(-50%, -50%) rotate(360deg) scale(0%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(0) scale(100%);
+        opacity: 1;
+    }
+}
+
+/* Links */
+.navSlideInBar li {
+    transform: translate(-50%, 0);
+    animation: slideInLinks 0.3s ease forwards;
+    animation-delay: 0.3s;
+}
+@keyframes slideInLinks {
+    from {transform: translate(-50%, 0);}
+    to {transform: translate(0%, 0);}
+}
+.navSlideOutBar li {
+    transform: translate(0%, 0);
+    animation: slideOutLinks 0.3s ease forwards;
+    animation-delay: 0.05s;
+}
+@keyframes slideOutLinks {
+    from {transform: translate(0%, 0);}
+    to {transform: translate(-50%, 0);}
+}
+
+/* Leave page */
+.leavepage {
+    position: fixed;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    left: 0;
+}
+/* Make screen black screen bounce */
+.leavepage.transition {
+    animation: slideDownTransition 0.2s ease-in forwards;
+}
+@keyframes slideDownTransition {
+    to {top: 0;}
+}

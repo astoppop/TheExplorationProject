@@ -1,0 +1,118 @@
+:root {
+    --mainColor: #064663;
+    --secondaryColor: #04293A;
+}
+
+body {
+    background-color: var(--mainColor);
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+.top-cover, .bottom-cover {
+    position: absolute;
+    margin: 0;
+    min-width: 100%;
+    min-height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.top-cover .center, .bottom-cover .center {
+    margin: 0;
+}
+div h1 {
+    -webkit-user-select: none;
+    margin: 0;
+    font-size: calc(5vw + 5vh);
+    text-align: center;
+}
+div p {
+    -webkit-user-select: none;
+    margin: 0;
+    font-size: calc(2.5vw + 2.5vh);
+    text-align: center;
+}
+.top-cover .center h1 {color: var(--mainColor);}
+.bottom-cover .center h1 {color: var(--secondaryColor);}
+.top-cover .center p {color: var(--secondaryColor);}
+.bottom-cover .center p {color: var(--mainColor);}
+
+.top-cover .center, .bottom-cover .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.top-cover img, .bottom-cover img {
+    max-width: 100%;
+    max-height: 100%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bottom-cover {
+    /* Uses coords to draw shape and create the inverse color effect */
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+    background: var(--secondaryColor);
+}
+.button {
+    -webkit-user-select: none;
+    margin: 0;
+    font-size: calc(3vw + 3vh);
+    height: calc(4vw + 4vh);
+    width: calc(4vw + 4vh);
+    border-radius: 50%;
+    border: none;
+    cursor: default;
+}
+#top-button, #bottom-button.hovered {
+    background-color: var(--secondaryColor);
+    color: var(--mainColor);
+    cursor: default;
+    border: 2px solid var(--mainColor);
+}
+#bottom-button, #top-button.hovered {
+    background-color: var(--mainColor);
+    color: var(--secondaryColor);
+    cursor: default;
+    border: 2px solid var(--secondaryColor);
+}
+.hovered {
+    cursor: pointer !important;
+}
+
+@keyframes glowWhite {
+    from {
+    /* text-shadow: offset-x offset-y blur-radius, color */
+    /* Overlap shadows for effect */
+        text-shadow: 0 0 0.25vw var(--secondaryColor), 0 0 0.5vw var(--secondaryColor), 0 0 0.75vw var(--secondaryColor), 0 0 1vw var(--secondaryColor), 0 0 1.25vw var(--secondaryColor), 0 0 1.5vw var(--secondaryColor), 0 0 1.75vw var(--secondaryColor);
+    }
+    to {text-shadow: 0 0 0.25vw var(--secondaryColor), 0 0 0.5vw var(--secondaryColor), 0 0 0.75vw var(--secondaryColor), 0 0 1vw var(--secondaryColor), 0 0 1.25vw var(--secondaryColor), 0 0 1.5vw var(--secondaryColor), 0 0 1.75vw var(--secondaryColor), 0 0 2.25vw var(--secondaryColor);}
+}
+@keyframes glowBlack {
+    from {text-shadow: 0 0 0.25vw var(--mainColor), 0 0 0.5vw var(--mainColor), 0 0 0.75vw var(--mainColor), 0 0 1vw var(--mainColor), 0 0 1.25vw var(--mainColor), 0 0 1.5vw var(--mainColor), 0 0 1.75vw var(--mainColor);}
+    to {text-shadow: 0 0 0.25vw var(--mainColor), 0 0 0.5vw var(--mainColor), 0 0 0.75vw var(--mainColor), 0 0 1vw var(--mainColor), 0 0 1.25vw var(--mainColor), 0 0 1.5vw var(--mainColor), 0 0 1.75vw var(--mainColor), 0 0 2.25vw var(--mainColor);}
+}
+.top-cover .glow {
+    /* Animation duration type iterations direction */
+    animation: glowWhite 1s ease-in-out infinite alternate;
+}
+.bottom-cover .glow {
+    animation: glowBlack 1s ease-in-out infinite alternate;
+}
+
+/* Button click transitions */
+.transition {
+    animation: transition 1s linear;
+}
+@keyframes transition {
+    33% {transform: scale(8);}
+    66% {transform: scale(8) rotate(720deg);}
+    100% {transform: scale(40);}
+}

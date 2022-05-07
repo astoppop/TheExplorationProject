@@ -1,0 +1,49 @@
+body {
+    overflow-y: hidden;
+}
+img {
+    image-rendering: crisp-edges;
+}
+.slides {
+    max-width: 100%;
+}
+.slides > div {
+    height: 100vh;
+}
+.slides div div.notes, .slides div div.cborder {
+    position: absolute;
+    border: 5px solid #000;
+    margin: 10px 0;
+    height: calc(100vh - 25px);
+}
+.slides div div.notes {
+    left: 5px;
+    width: calc(40% - 20px);
+    text-align: center;
+}
+.notes div {
+    text-align: center;
+}
+.notes .progressbar {
+    position: relative;
+    bottom: 0;
+    overflow: hidden;
+    width: 90%;
+    margin: 0 auto;
+}
+.progressbar button {
+    width: 15%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.progressbar progress {
+    width: 60%;
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+.slides div .cborder {
+    left: 40%;
+    width: calc(60% - 15px);
+    overflow: hidden;
+    text-align: center;
+}
